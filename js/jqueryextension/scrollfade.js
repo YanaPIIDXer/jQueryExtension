@@ -1,31 +1,41 @@
-$.fn.scrollFade = function(offset)
+try
 {
-    if(offset == undefined)
+    if(typeof is_inside_screen !== "function")
     {
-        offset = 0;
+        throw new Error("helper.jsが読み込まれていません。");
     }
-    var self = this;
-    var $window = $(window);
-
-    this.each(function()
+    
+    $.fn.scrollFade = function(offset)
     {
-        $(this).css({opacity: 0});
-    });
-
-    function checkVisibility()
-    {
-        self.each(function()
+        if(offset == undefined)
         {
-            var top = $(this).offset().top;
-            var border = $window.scrollTop() + $window.height();
-            if(border > top + offset)
-            {
-                $(this).stop(true).animate({opacity: 1}, 500, "linear");
-            }
+            offset = 0;
+        }
+        var self = this;
+        var $window = $(window);
+
+        this.each(function()
+        {
+            $(this).css({opacity: 0});
         });
+
+        function checkAndAnimate()
+        {
+            self.each(function()
+            {
+                if(is_inside_screen($(this), offset))
+                {
+                    $(this).stop(true).animate({opacity: 1}, 500, "linear");
+                }
+            });
+        }
+
+        $window.scroll(checkAndAnimate);
+
+        checkAndAnimate();
     }
-
-    $window.scroll(checkVisibility);
-
-    checkVisibility();
+}
+catch(e)
+{
+    alert(e);
 }
