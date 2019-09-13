@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery拡張 ズームイン</title>
+<link rel="stylesheet" href="css/zoomin.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jqueryextension/zoomin.js"></script>
+
+<script type="text/javascript">
+    $(function()
+    {
+        // ↓zoomin.jsで定義されているメソッド。
+        //  自身を拡縮させるパターン
+        $("#target1").zoomIn();
+
+        // ↓内部の要素を拡縮させるパターン
+        //  ついでに拡縮サイズも引数に指定。
+        $(".card").each(function()
+        {
+            $(this).zoomIn(2.0, $(this).find("span"));
+        });
+    });
+</script>
+
+</head>
+<body>
+<span id="target1">Test</span><br /><br />
+<div class="card">
+    <span>Test1</span>
+</div>
+<div class="card">
+    <span>Test2</span>
+</div>
+<div class="card">
+    <span>Test3</span>
+</div>
+</body>
+</html>
