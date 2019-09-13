@@ -14,21 +14,24 @@ try
         var self = this;
         var $window = $(window);
 
+        var animated = [];
         this.each(function()
         {
             $(this).css({opacity: 0});
+            animated.push(false);
         });
 
         function checkAndAnimate()
         {
-            self.each(function()
+            self.each(function(index)
             {
-                if(is_inside_screen($(this), offset))
+                if(!animated[index] && is_inside_screen($(this), offset))
                 {
                     $(this).animate(
                         {opacity: 1},
                         {duration: 500, queue: false},
                         "linear");
+                    animated[index] = true;
                 }
             });
         }
