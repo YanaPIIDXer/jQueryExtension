@@ -7,14 +7,25 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jqueryextension/helper.js"></script>
 <script src="js/jqueryextension/scrollfade.js"></script>
+<script src="js/jqueryextension/wipein.js"></script>
 
 <script type="text/javascript">
     $(function()
     {
-        $(".item").each(function()
+        $(".item").each(function(index)
         {
             // ↓scrollfade.jsで定義しているメソッド。
             $(this).scrollFade();
+
+            // ↓wipein.jsで定義しているメソッド。
+            if(index % 2 == 0)
+            {
+                $(this).wipeInFromLeft();
+            }
+            else
+            {
+                $(this).wipeInFromRight();
+            }
         });
     })
 </script>

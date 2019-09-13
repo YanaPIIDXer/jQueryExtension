@@ -25,13 +25,15 @@ try
             {
                 if(is_inside_screen($(this), offset))
                 {
-                    $(this).stop(true).animate({opacity: 1}, 500, "linear");
+                    $(this).animate(
+                        {opacity: 1},
+                        {duration: 500, queue: false},
+                        "linear");
                 }
             });
         }
 
         $window.scroll(checkAndAnimate);
-
         checkAndAnimate();
     }
 }
