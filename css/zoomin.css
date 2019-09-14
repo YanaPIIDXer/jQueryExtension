@@ -1,3 +1,11 @@
+.caption {
+    text-align: center;
+}
+
+h2.caption {
+    margin-bottom: 50px;
+}
+
 .card {
     border: 1px solid;
     overflow: hidden;

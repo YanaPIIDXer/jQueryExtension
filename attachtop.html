@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery拡張 画面追従</title>
+<link rel="stylesheet" href="css/attachtop.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jqueryextension/helper.js"></script>
+<script src="js/jqueryextension/attachtop.js"></script>
+
+<script type="text/javascript">
+    $(function()
+    {
+        $(".global-navigation").attachTop();
+    });
+</script>
+
+</head>
+<body>
+<div class="main-visual">
+    <h1 class="caption">画面追従</h1>
+    <h2 class="caption">画面のスクロールに追従させる</h2>        
+</div>
+<ul class="global-navigation">
+    <li class="navigation-item"><a href="#item1">要素１</a></li>
+    <li class="navigation-item"><a href="#item2">要素２</a></li>
+    <li class="navigation-item"><a href="#item3">要素３</a></li>
+    <li class="navigation-item"><a href="#item4">要素４</a></li>
+    <li class="navigation-item"><a href="#item5">要素５</a></li>
+</ul>
+
+<div class="item" id="item1">
+    要素１
+</div>
+<div class="item" id="item2">
+    要素２
+</div>
+<div class="item" id="item3">
+    要素３
+</div>
+<div class="item" id="item4">
+    要素４
+</div>
+<div class="item" id="item5">
+    要素５
+</div>
+</body>
+</html>
