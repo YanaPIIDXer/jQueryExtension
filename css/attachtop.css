@@ -16,6 +16,7 @@ h2.caption {
     list-style: none;
     overflow: hidden;
     width: 100%;
+    z-index: 1;
 }
 
 .global-navigation .navigation-item {
