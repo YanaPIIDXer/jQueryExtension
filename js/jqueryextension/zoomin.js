@@ -1,27 +1,30 @@
-$.fn.zoomIn = function(scaleRate, $target)
+jQuery(function($)
 {
-    if(scaleRate == undefined)
+    $.fn.zoomIn = function(scaleRate, $target)
     {
-        scaleRate = 1.5;
-    }
-    
-    if($target == undefined)
-    {
-        $target = $(this);
-    }
+        if(scaleRate == undefined)
+        {
+            scaleRate = 1.5;
+        }
+        
+        if($target == undefined)
+        {
+            $target = $(this);
+        }
 
-    $target.css("transition", "0.5s");
-    
-    this.each(function()
-    {
-        $(this).mouseenter(function()
+        $target.css("transition", "0.5s");
+        
+        this.each(function()
         {
-            var value = "scale(" + scaleRate + ")";
-            $target.stop(true).css({transform: value});
-        })
-        .mouseleave(function()
-        {
-            $target.stop(true).css({transform: "scale(1.0)"});
+            $(this).mouseenter(function()
+            {
+                var value = "scale(" + scaleRate + ")";
+                $target.stop(true).css({transform: value});
+            })
+            .mouseleave(function()
+            {
+                $target.stop(true).css({transform: "scale(1.0)"});
+            });
         });
-    });
-}
+    }
+});

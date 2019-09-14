@@ -1,25 +1,28 @@
-$.fn.attachTop = function()
+jQuery(function($)
 {
-    this.each(function()
+    $.fn.attachTop = function()
     {
-        $self = $(this);
-        $self.css("position", "absolute");
-        defaultTop = $self.offset().top;
-        
-        $(window).scroll(function()
+        this.each(function()
         {
-            if($(window).scrollTop() > defaultTop)
+            $self = $(this);
+            $self.css("position", "absolute");
+            defaultTop = $self.offset().top;
+            
+            $(window).scroll(function()
             {
-                $self.css("position", "fixed");
-                $self.css("top", 0);   
-            }
-            else
-            {
-                $self.css("position", "absolute");
-                $self.css("top", "auto");
-            }
+                if($(window).scrollTop() > defaultTop)
+                {
+                    $self.css("position", "fixed");
+                    $self.css("top", 0);   
+                }
+                else
+                {
+                    $self.css("position", "absolute");
+                    $self.css("top", "auto");
+                }
+            });
         });
-    });
-
-    $(window).scroll();
-}
+    
+        $(window).scroll();
+    }    
+});
