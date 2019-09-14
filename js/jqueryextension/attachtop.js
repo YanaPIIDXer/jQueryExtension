@@ -1,4 +1,3 @@
-    
 $.fn.attachTop = function()
 {
     this.each(function()
