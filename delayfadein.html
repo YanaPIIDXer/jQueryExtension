@@ -11,7 +11,11 @@
     $(function()
     {
         // ↓delayfadein.jsで定義されているメソッド。
-        $(".item").delayFadeIn(500);
+        $(".item").delayFadeIn(500, function()
+        {
+            // 終了コールバック
+            $(".item").css("background-color", "#FF00FF");
+        });
     });
 </script>
 
