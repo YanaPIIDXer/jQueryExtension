@@ -18,11 +18,11 @@
             //  scrollFade() : scrollfade.jsで定義しているメソッド。
             if(index % 2 == 0)
             {
-                $(this).wipeInFromLeft().scrollFade();
+                $(this).wipeInFromLeft(1000).scrollFade(2000);
             }
             else
             {
-                $(this).wipeInFromRight().scrollFade();
+                $(this).wipeInFromRight(1000).scrollFade(2000);
             }
         });
     })
