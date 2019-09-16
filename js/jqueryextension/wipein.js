@@ -24,16 +24,18 @@ jQuery(function($)
                 }
                 defaultPosition.push($(this).css("left"));
                 animated.push(false);
-            
+
+                width = $(this).width();
                 if(fromRight)
                 {
                     // 右から
-                    $(this).css("left", "1000px");
+                    screenRight = $(window).width();
+                    $(this).css("left", (width + screenRight) + "px");
                 }
                 else
                 {
                     // 左から
-                    $(this).css("left", "-1000px");
+                    $(this).css("left", "-" + width + "px");
                 }
             });
 
