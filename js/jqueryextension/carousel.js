@@ -1,7 +1,11 @@
 jQuery(function($)
 {
-    $.fn.setCarousel = function(changeTime, onActive, onDeactive)
+    $.fn.setCarousel = function(changeTime, fadeTime, onActive, onDeactive)
     {
+        if(fadeTime == undefined)
+        {
+            fadeTime = 500;
+        }
         if(onActive == undefined)
         {
             onActive = function() {}
@@ -31,11 +35,11 @@ jQuery(function($)
             {
                 nextIndex = 0;
             }
-            $items[currentIndex].stop(true).animate({opacity: 0}, 500, "linear", function()
+            $items[currentIndex].stop(true).animate({opacity: 0}, fadeTime, "linear", function()
             {
                 $(this).triggerHandler("onCarouselDeactive");
             });
-            $items[nextIndex].stop(true).animate({opacity: 1}, 500, "linear");
+            $items[nextIndex].stop(true).animate({opacity: 1}, fadeTime, "linear");
             currentIndex = nextIndex;
             $items[currentIndex].triggerHandler("onCarouselActive");
             setTimeout(switchItem, changeTime);

@@ -1,7 +1,12 @@
 jQuery(function($)
 {
-    $.fn.zoomIn = function(scaleRate, $target)
+    $.fn.zoomIn = function(animateTime, scaleRate, $target)
     {
+        if(animateTime == undefined)
+        {
+            animateTime = 500;
+        }
+        
         if(scaleRate == undefined)
         {
             scaleRate = 1.5;
@@ -12,7 +17,8 @@ jQuery(function($)
             $target = $(this);
         }
 
-        $target.css("transition", "0.5s");
+        var milliSec = animateTime / 1000;
+        $target.css("transition", milliSec + "s");
         
         this.each(function()
         {

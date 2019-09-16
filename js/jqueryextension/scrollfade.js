@@ -7,8 +7,13 @@ jQuery(function($)
             throw new Error("helper.jsが読み込まれていません。");
         }
         
-        $.fn.scrollFade = function(offset)
+        $.fn.scrollFade = function(animateTime, offset)
         {
+            if(animateTime == undefined)
+            {
+                animateTime = 500;
+            }
+            
             if(offset == undefined)
             {
                 offset = 0;
@@ -31,7 +36,7 @@ jQuery(function($)
                     {
                         $(this).animate(
                             {opacity: 1},
-                            {duration: 500, queue: false},
+                            {duration: animateTime, queue: false},
                             "linear");
                         animated[index] = true;
                     }

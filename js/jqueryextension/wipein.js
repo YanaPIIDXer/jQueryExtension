@@ -7,13 +7,8 @@ jQuery(function($)
             throw new Error("helper.jsが読み込まれていません。");
         }
 
-        function wipeIn($obj, offset, fromRight)
-        {
-            if(offset == undefined)
-            {
-                offset = 0;
-            }
-            
+        function wipeIn($obj, animateTime,  offset, fromRight)
+        {            
             var $window = $(window);
 
             var defaultPosition = [];
@@ -50,7 +45,7 @@ jQuery(function($)
                     {
                         $(this).animate(
                             {left: defaultPosition[index]},
-                            {duration: 500, queue: false},
+                            {duration: animateTime, queue: false},
                             "linear");
                         animated[index] = true;
                     }
@@ -61,15 +56,35 @@ jQuery(function($)
             checkAndAnimate();
         }
         
-        $.fn.wipeInFromLeft = function(offset)
+        $.fn.wipeInFromLeft = function(animateTime, offset)
         {
-            wipeIn($(this), offset, false);
+            if(animateTime == undefined)
+            {
+                animateTime = 500;
+            }
+
+            if(offset == undefined)
+            {
+                offset = 0;
+            }
+
+            wipeIn($(this), animateTime, offset, false);
             return $(this);
         }
         
-        $.fn.wipeInFromRight = function(offset)
+        $.fn.wipeInFromRight = function(animateTime, offset)
         {
-            wipeIn($(this), offset, true);
+            if(animateTime == undefined)
+            {
+                animateTime = 500;
+            }
+            
+            if(offset == undefined)
+            {
+                offset = 0;
+            }
+
+            wipeIn($(this), animateTime, offset, true);
             return $(this);
         }
     }
