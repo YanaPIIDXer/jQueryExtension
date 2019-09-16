@@ -26,5 +26,7 @@ jQuery(function()
             }, delay);
             delay += delayTime;
         });
+            
+        return $(this);
     }
 });

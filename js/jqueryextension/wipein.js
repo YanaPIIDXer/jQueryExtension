@@ -64,11 +64,13 @@ jQuery(function($)
         $.fn.wipeInFromLeft = function(offset)
         {
             wipeIn($(this), offset, false);
+            return $(this);
         }
         
         $.fn.wipeInFromRight = function(offset)
         {
             wipeIn($(this), offset, true);
+            return $(this);
         }
     }
     catch(e)

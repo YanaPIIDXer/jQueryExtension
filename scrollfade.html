@@ -14,17 +14,15 @@
     {
         $(".item").each(function(index)
         {
-            // ↓scrollfade.jsで定義しているメソッド。
-            $(this).scrollFade();
-
-            // ↓wipein.jsで定義しているメソッド。
+            // ↓wipeInFromLeft() / wipeInFromRight() : wipein.jsで定義しているメソッド。
+            //  scrollFade() : scrollfade.jsで定義しているメソッド。
             if(index % 2 == 0)
             {
-                $(this).wipeInFromLeft();
+                $(this).wipeInFromLeft().scrollFade();
             }
             else
             {
-                $(this).wipeInFromRight();
+                $(this).wipeInFromRight().scrollFade();
             }
         });
     })

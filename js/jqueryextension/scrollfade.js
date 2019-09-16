@@ -40,6 +40,8 @@ jQuery(function($)
 
             $window.scroll(checkAndAnimate);
             checkAndAnimate();
+
+            return $(this);
         }
     }
     catch(e)

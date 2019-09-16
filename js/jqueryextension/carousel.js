@@ -43,5 +43,7 @@ jQuery(function($)
 
         $items[0].triggerHandler("onCarouselActive");
         setTimeout(switchItem, changeTime);
+
+        return $(this);
     }
 });
