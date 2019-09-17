@@ -33,4 +33,20 @@ jQuery(function($)
             });
         });
     }
+    
+    $("body *").each(function()
+    {
+        if($(this).data("enablezoom"))
+        {
+            var time = $(this).data("zoomtime");
+            var scaleRate = $(this).data("zoomscalerate");
+            var target = $(this).data("zoomtarget");
+            var $target = undefined;
+            if(target != undefined)
+            {
+                $target = $(target);
+            }
+            $(this).zoomIn(time, scaleRate, $target);
+        }
+    });
 });
