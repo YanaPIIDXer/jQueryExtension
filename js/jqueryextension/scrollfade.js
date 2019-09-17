@@ -53,4 +53,14 @@ jQuery(function($)
     {
         alert(e);
     }
+
+    $("body *").each(function()
+    {
+        if($(this).data("scrollfade"))
+        {
+            var time = $(this).data("scrollfadetime");
+            var offset = $(this).data("scrollfadeoffset");
+            $(this).scrollFade(time, offset);
+        }
+    });
 });

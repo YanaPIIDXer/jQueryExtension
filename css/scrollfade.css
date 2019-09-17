@@ -15,3 +15,13 @@ h2.caption {
     text-align: center;
     margin-bottom: 200px;
 }
+
+.auto-item {
+    position: relative;
+    border: 1px solid;
+    width: 90vw;
+    left: 5%;
+    height: 500px;
+    text-align: center;
+    margin-bottom: 200px;
+}
