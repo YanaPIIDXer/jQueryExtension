@@ -26,5 +26,14 @@ jQuery(function($)
         $(window).scroll();
 
         return $(this);
-    } 
+    }
+
+    $("body *").each(function()
+    {
+        if($(this).data("enableattachtop"))
+        {
+            $(this).attachTop();
+        }
+    });
+
 });

@@ -9,10 +9,14 @@
 <script src="js/jqueryextension/attachtop.js"></script>
 
 <script type="text/javascript">
+    // ↓別にこれでもいいんだけど、HTMLタグにdata-enableattachtop="true"をブチ込む事で
+    //  勝手に追従させるようにしている。
+    /*
     $(function()
     {
         $(".global-navigation").attachTop();
     });
+    */
 </script>
 
 </head>
@@ -21,7 +25,7 @@
     <h1 class="caption">画面追従</h1>
     <h2 class="caption">画面のスクロールに追従させる</h2>        
 </div>
-<ul class="global-navigation">
+<ul class="global-navigation" data-enableattachtop="true">
     <li class="navigation-item"><a href="#item1">要素１</a></li>
     <li class="navigation-item"><a href="#item2">要素２</a></li>
     <li class="navigation-item"><a href="#item3">要素３</a></li>
