@@ -94,4 +94,22 @@ jQuery(function($)
     {
         alert(e);
     }
+
+    $("body *").each(function()
+    {
+        if($(this).data("scrollfade"))
+        {
+            var direction = $(this).data("scrollwipedirection");
+            var time = $(this).data("scrollwipetime");
+            var offset = $(this).data("scrollwipeoffset");
+            if(direction == "left")
+            {
+                $(this).wipeInFromLeft(time, offset);
+            }
+            else if(direction == "right")
+            {
+                $(this).wipeInFromRight(time, offset);
+            }
+        }
+    });
 });
