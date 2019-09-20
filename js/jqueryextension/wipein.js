@@ -7,13 +7,18 @@ jQuery(function($)
             throw new Error("helper.jsが読み込まれていません。");
         }
 
-        function wipeIn($obj, animateTime,  offset, fromRight)
+        const DIRECTION_FROM_LEFT = 0;
+        const DIRECTION_FROM_RIGHT = 1;
+        const DIRECTION_FROM_BOTTOM = 2;
+
+        function wipeIn($obj, animateTime,  offset, Direction)
         {            
             var $window = $(window);
 
             var defaultLeft = [];
             var animated = [];
             var defaultTop = [];
+            var defaultTopCss = [];
 
             $obj.each(function(index)
             {
@@ -29,19 +34,29 @@ jQuery(function($)
                 var tmp = $(this).css("top");
                 $(this).css({top: ""});
                 defaultTop.push($(this).offset().top);
+                defaultTopCss.push(tmp);
                 $(this).css({top: tmp});
 
                 width = $(this).width();
-                if(fromRight)
+                switch(Direction)
                 {
-                    // 右から
-                    screenRight = $(window).width();
-                    $(this).css("left", (width + screenRight) + "px");
-                }
-                else
-                {
-                    // 左から
-                    $(this).css("left", "-" + width + "px");
+                    case DIRECTION_FROM_LEFT:
+                        // 左から
+                        $(this).css("left", "-" + width + "px");
+                        break;
+
+                    case DIRECTION_FROM_RIGHT:
+                        // 右から
+                        screenRight = $(window).width();
+                        $(this).css("left", (width + screenRight));
+                        break;
+
+                    case DIRECTION_FROM_BOTTOM:
+
+                        // 下から
+                        bottom = $(this).offset().top + $(this).height();
+                        $(this).css("top", bottom);
+                        break;
                 }
             });
 
@@ -52,7 +67,7 @@ jQuery(function($)
                     if(!animated[index] && is_inside_screen($(this), offset, defaultTop[index]))
                     {
                         $(this).animate(
-                            {left: defaultLeft[index]},
+                            {left: defaultLeft[index], top: defaultTopCss[index]},
                             {duration: animateTime, queue: false},
                             "linear");
                         animated[index] = true;
@@ -76,7 +91,7 @@ jQuery(function($)
                 offset = 0;
             }
 
-            wipeIn($(this), animateTime, offset, false);
+            wipeIn($(this), animateTime, offset, DIRECTION_FROM_LEFT);
             return $(this);
         }
         
@@ -92,7 +107,23 @@ jQuery(function($)
                 offset = 0;
             }
 
-            wipeIn($(this), animateTime, offset, true);
+            wipeIn($(this), animateTime, offset, DIRECTION_FROM_RIGHT);
+            return $(this);
+        }
+        
+        $.fn.wipeInFromBottom = function(animateTime, offset)
+        {
+            if(animateTime == undefined)
+            {
+                animateTime = 500;
+            }
+            
+            if(offset == undefined)
+            {
+                offset = 0;
+            }
+
+            wipeIn($(this), animateTime, offset, DIRECTION_FROM_BOTTOM);
             return $(this);
         }
     }
@@ -115,6 +146,10 @@ jQuery(function($)
             else if(direction == "right")
             {
                 $(this).wipeInFromRight(time, offset);
+            }
+            else if(direction == "bottom")
+            {
+                $(this).wipeInFromBottom(time, offset);
             }
         }
     });
