@@ -9,7 +9,6 @@ jQuery(function($)
 
         const DIRECTION_FROM_LEFT = 0;
         const DIRECTION_FROM_RIGHT = 1;
-        const DIRECTION_FROM_BOTTOM = 2;
 
         function wipeIn($obj, animateTime,  offset, Direction)
         {            
@@ -18,8 +17,7 @@ jQuery(function($)
             var defaultLeft = [];
             var animated = [];
             var defaultTop = [];
-            var defaultTopCss = [];
-
+            
             $obj.each(function(index)
             {
                 // positionがstaticの時はrelativeに書き換える。
@@ -34,7 +32,6 @@ jQuery(function($)
                 var tmp = $(this).css("top");
                 $(this).css({top: ""});
                 defaultTop.push($(this).offset().top);
-                defaultTopCss.push(tmp);
                 $(this).css({top: tmp});
 
                 width = $(this).width();
@@ -50,13 +47,6 @@ jQuery(function($)
                         screenRight = $(window).width();
                         $(this).css("left", (width + screenRight));
                         break;
-
-                    case DIRECTION_FROM_BOTTOM:
-
-                        // 下から
-                        bottom = $(this).offset().top + $(this).height();
-                        $(this).css("top", bottom);
-                        break;
                 }
             });
 
@@ -67,7 +57,7 @@ jQuery(function($)
                     if(!animated[index] && is_inside_screen($(this), offset, defaultTop[index]))
                     {
                         $(this).animate(
-                            {left: defaultLeft[index], top: defaultTopCss[index]},
+                            {left: defaultLeft[index]},
                             {duration: animateTime, queue: false},
                             "linear");
                         animated[index] = true;
