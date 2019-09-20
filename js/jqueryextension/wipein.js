@@ -11,8 +11,9 @@ jQuery(function($)
         {            
             var $window = $(window);
 
-            var defaultPosition = [];
+            var defaultLeft = [];
             var animated = [];
+            var defaultTop = [];
 
             $obj.each(function(index)
             {
@@ -22,8 +23,13 @@ jQuery(function($)
                 {
                     $(this).css("position", "relative");
                 }
-                defaultPosition.push($(this).css("left"));
+                defaultLeft.push($(this).css("left"));
                 animated.push(false);
+
+                var tmp = $(this).css("top");
+                $(this).css({top: ""});
+                defaultTop.push($(this).offset().top);
+                $(this).css({top: tmp});
 
                 width = $(this).width();
                 if(fromRight)
@@ -43,10 +49,10 @@ jQuery(function($)
             {
                 $obj.each(function(index)
                 {
-                    if(!animated[index] && is_inside_screen($(this), offset))
+                    if(!animated[index] && is_inside_screen($(this), offset, defaultTop[index]))
                     {
                         $(this).animate(
-                            {left: defaultPosition[index]},
+                            {left: defaultLeft[index]},
                             {duration: animateTime, queue: false},
                             "linear");
                         animated[index] = true;

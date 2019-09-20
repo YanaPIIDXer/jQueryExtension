@@ -22,17 +22,23 @@ jQuery(function($)
             var $window = $(window);
 
             var animated = [];
+            var defaultTop = [];
             this.each(function()
             {
                 $(this).css({opacity: 0});
                 animated.push(false);
+
+                var tmp = $(this).css("top");
+                $(this).css({top: ""});
+                defaultTop.push($(this).offset().top);
+                $(this).css({top: tmp});
             });
 
             function checkAndAnimate()
             {
                 self.each(function(index)
                 {
-                    if(!animated[index] && is_inside_screen($(this), offset))
+                    if(!animated[index] && is_inside_screen($(this), offset, defaultTop[index]))
                     {
                         $(this).animate(
                             {opacity: 1},
