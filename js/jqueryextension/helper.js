@@ -29,7 +29,7 @@ jQuery(function()
         $(this).on("onscreen", callback);
 
         var is_inside = false;
-        $self = $(this);
+        var $self = $(this);
         $(window).scroll(function()
         {
             if(is_inside_screen($self, offset))
