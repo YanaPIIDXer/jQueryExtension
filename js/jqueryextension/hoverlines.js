@@ -21,7 +21,7 @@ jQuery(function()
             var paddingTop = parseInt($(this).css("padding-top").replace("px", ""));
             var paddingLeft = parseInt($(this).css("padding-left").replace("px", ""));
 
-            var thisLeft = $(this).offset().left + paddingLeft;
+            var thisLeft = $(this).position().left + paddingLeft;
             var $over = $("<div>",
             {
                 width: 0,
@@ -30,7 +30,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: thisLeft,
-                    top: $(this).offset().top + paddingTop,
+                    top: $(this).position().top + paddingTop,
                     borderTop: "1px solid",
                 },
             });
@@ -44,7 +44,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: underLeft,
-                    top: $(this).offset().top + paddingTop,
+                    top: $(this).position().top + paddingTop,
                     borderBottom: "1px solid",
                 },
             });
