@@ -16,11 +16,12 @@ jQuery(function()
 
             var area = check_str_area($(this));
             
-            // ↓replace()使ってる時点で気付くかも知れんけど、返ってきてるのは文字列と言うトラップ。
+            // ↓replace()使ってる時点で気付くかも知れんけど、cssメソッドが返してるのは文字列と言うトラップ。（プロパティの種類によるか・・・？）
+            //  何も考えずに数値と演算すると文字列結合になって死なますよ。
             var paddingTop = parseInt($(this).css("padding-top").replace("px", ""));
             var paddingLeft = parseInt($(this).css("padding-left").replace("px", ""));
 
-            var thisLeft = $(this).position().left + paddingLeft;
+            var thisLeft = $(this).offset().left + paddingLeft;
             var $over = $("<div>",
             {
                 width: 0,
@@ -29,7 +30,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: thisLeft,
-                    top: $(this).position().top + paddingTop,
+                    top: $(this).offset().top + paddingTop,
                     borderTop: "1px solid",
                 },
             });
@@ -43,7 +44,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: underLeft,
-                    top: $(this).position().top + paddingTop,
+                    top: $(this).offset().top + paddingTop,
                     borderBottom: "1px solid",
                 },
             });
