@@ -26,7 +26,7 @@ jQuery(function($)
                 {
                     $(this).css("position", "relative");
                 }
-                defaultLeft.push($(this).css("left"));
+                defaultLeft.push($(this).offset().left);
                 animated.push(false);
 
                 var tmp = $(this).css("top");
