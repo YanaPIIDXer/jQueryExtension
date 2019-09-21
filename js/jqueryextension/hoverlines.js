@@ -15,8 +15,12 @@ jQuery(function()
             }
 
             var area = check_str_area($(this));
+            
+            // ↓replace()使ってる時点で気付くかも知れんけど、返ってきてるのは文字列と言うトラップ。
+            var paddingTop = parseInt($(this).css("padding-top").replace("px", ""));
+            var paddingLeft = parseInt($(this).css("padding-left").replace("px", ""));
 
-            var thisLeft = $(this).offset().left;
+            var thisLeft = $(this).offset().left + paddingLeft;
             var $over = $("<div>",
             {
                 width: 0,
@@ -25,12 +29,12 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: thisLeft,
-                    top: $(this).offset().top,
+                    top: $(this).offset().top + paddingTop,
                     borderTop: "1px solid",
                 },
             });
             
-            var underLeft = $(this).offset().left + area.width;
+            var underLeft = thisLeft + area.width;
             var $under = $("<div>",
             {
                 width: 0,
@@ -39,7 +43,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: underLeft,
-                    top: $(this).offset().top,
+                    top: $(this).offset().top + paddingTop,
                     borderBottom: "1px solid",
                 },
             });
