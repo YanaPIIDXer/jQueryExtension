@@ -1,0 +1,11 @@
+.caption {
+    text-align: center;
+}
+
+.item {
+    margin-top: 900px;
+    text-align: center;
+    width: 100vw;
+    height: 300px;
+    border: 1px solid;
+}

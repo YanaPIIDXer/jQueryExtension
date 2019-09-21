@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery拡張 画面内に入った時にイベント発火</title>
+<link rel="stylesheet" href="css/onscreen.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jqueryextension/helper.js"></script>
+
+<script type="text/javascript">
+    $(function()
+    {
+        $(".item").onScreen(function()
+        {
+            $(this).css(
+            {
+                "background-color": "#FF00FF",
+                "transition": "2.5s",
+            });
+        });
+    });
+</script>
+
+</head>
+<body>
+<h1 class="caption">画面内に入った時にイベント発火</h1>
+<h2 class="caption">要素が画面内に入った時にイベントを発火させる。</h2>
+<div class="item">
+    要素
+</div>
+</body>
+</html>
