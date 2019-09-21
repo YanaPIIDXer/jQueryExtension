@@ -11,11 +11,21 @@
     $(function()
     {
         $("#target").hoverLines();
+        $(".list .list-item").each(function()
+        {
+            $(this).hoverLines();
+        });
     });
 </script>
 
 </head>
 <body>
 <span id="target">要素</span>
+<ul class="list">
+    <li class="list-item">リストアイテム１</li>
+    <li class="list-item">リストアイテム２</li>
+    <li class="list-item">リストアイテム３</li>
+    <li class="list-item">リストアイテム４</li>
+</ul>
 </body>
 </html>

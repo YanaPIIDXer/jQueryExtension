@@ -6,7 +6,7 @@ jQuery(function()
         {
             throw new Error("helper.jsが読み込まれていません。");
         }
-            
+        
         $.fn.hoverLines = function(animateTime)
         {
             if(animateTime == undefined)
@@ -17,7 +17,7 @@ jQuery(function()
             var area = check_str_area($(this));
 
             var thisLeft = $(this).offset().left;
-            $over = $("<div>",
+            var $over = $("<div>",
             {
                 width: 0,
                 height: area.height,
@@ -31,7 +31,7 @@ jQuery(function()
             });
             
             var underLeft = $(this).offset().left + area.width;
-            $under = $("<div>",
+            var $under = $("<div>",
             {
                 width: 0,
                 height: area.height,
