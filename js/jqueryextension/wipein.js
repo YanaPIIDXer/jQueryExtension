@@ -26,7 +26,7 @@ jQuery(function($)
                 {
                     $(this).css("position", "relative");
                 }
-                defaultLeft.push($(this).offset().left);
+                defaultLeft.push($(this).position().left);
                 animated.push(false);
 
                 var tmp = $(this).css("top");
@@ -35,16 +35,16 @@ jQuery(function($)
                 $(this).css({top: tmp});
 
                 width = $(this).width();
+                screenRight = $(window).width();
                 switch(Direction)
                 {
                     case DIRECTION_FROM_LEFT:
                         // 左から
-                        $(this).css("left", "-" + width + "px");
+                        $(this).css("left", "-" + (width + screenRight) + "px");
                         break;
 
                     case DIRECTION_FROM_RIGHT:
                         // 右から
-                        screenRight = $(window).width();
                         $(this).css("left", (width + screenRight));
                         break;
                 }
