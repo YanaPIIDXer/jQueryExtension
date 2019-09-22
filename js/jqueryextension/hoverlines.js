@@ -20,8 +20,10 @@ jQuery(function()
             //  何も考えずに数値と演算すると文字列結合になって死なますよ。
             var paddingTop = parseInt($(this).css("padding-top").replace("px", ""));
             var paddingLeft = parseInt($(this).css("padding-left").replace("px", ""));
+            var MarginTop = parseInt($(this).css("margin-top").replace("px", ""));
+            var MarginLeft = parseInt($(this).css("margin-left").replace("px", ""));
 
-            var thisLeft = $(this).position().left + paddingLeft;
+            var thisLeft = $(this).position().left + paddingLeft + MarginLeft;
             var $over = $("<div>",
             {
                 width: 0,
@@ -30,7 +32,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: thisLeft,
-                    top: $(this).position().top + paddingTop,
+                    top: $(this).position().top + paddingTop + MarginTop,
                     borderTop: "1px solid",
                 },
             });
@@ -44,7 +46,7 @@ jQuery(function()
                 {
                     position: "absolute",
                     left: underLeft,
-                    top: $(this).position().top + paddingTop,
+                    top: $(this).position().top + paddingTop + MarginTop,
                     borderBottom: "1px solid",
                 },
             });
