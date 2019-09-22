@@ -66,7 +66,7 @@ var check_str_area = function($obj)
         },
     });
 
-    $check.text($obj.text());
+    $check.html($obj.html());
     $("body").append($check);
     var strWidth = $check.get(0).offsetWidth;
     var strHeight = $check.get(0).offsetHeight;
