@@ -34,8 +34,8 @@ jQuery(function($)
                 defaultTop.push($(this).offset().top);
                 $(this).css({top: tmp});
 
-                width = $(this).width();
-                screenRight = $(window).width();
+                var width = $(this).width();
+                var screenRight = $(window).width();
                 switch(Direction)
                 {
                     case DIRECTION_FROM_LEFT:
@@ -45,7 +45,7 @@ jQuery(function($)
 
                     case DIRECTION_FROM_RIGHT:
                         // 右から
-                        $(this).css("left", (width + screenRight));
+                        $(this).css("left", (screenRight - width));
                         break;
                 }
             });
