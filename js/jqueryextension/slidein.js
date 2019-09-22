@@ -10,7 +10,7 @@ jQuery(function($)
         const DIRECTION_FROM_LEFT = 0;
         const DIRECTION_FROM_RIGHT = 1;
 
-        function wipeIn($obj, animateTime,  offset, Direction)
+        function slideIn($obj, animateTime,  offset, Direction)
         {            
             var $window = $(window);
 
@@ -69,7 +69,7 @@ jQuery(function($)
             checkAndAnimate();
         }
         
-        $.fn.wipeInFromLeft = function(animateTime, offset)
+        $.fn.slideInFromLeft = function(animateTime, offset)
         {
             if(animateTime == undefined)
             {
@@ -81,11 +81,11 @@ jQuery(function($)
                 offset = 0;
             }
 
-            wipeIn($(this), animateTime, offset, DIRECTION_FROM_LEFT);
+            slideIn($(this), animateTime, offset, DIRECTION_FROM_LEFT);
             return $(this);
         }
         
-        $.fn.wipeInFromRight = function(animateTime, offset)
+        $.fn.slideInFromRight = function(animateTime, offset)
         {
             if(animateTime == undefined)
             {
@@ -97,23 +97,7 @@ jQuery(function($)
                 offset = 0;
             }
 
-            wipeIn($(this), animateTime, offset, DIRECTION_FROM_RIGHT);
-            return $(this);
-        }
-        
-        $.fn.wipeInFromBottom = function(animateTime, offset)
-        {
-            if(animateTime == undefined)
-            {
-                animateTime = 500;
-            }
-            
-            if(offset == undefined)
-            {
-                offset = 0;
-            }
-
-            wipeIn($(this), animateTime, offset, DIRECTION_FROM_BOTTOM);
+            slideIn($(this), animateTime, offset, DIRECTION_FROM_RIGHT);
             return $(this);
         }
     }
@@ -126,20 +110,16 @@ jQuery(function($)
     {
         if($(this).data("scrollfade"))
         {
-            var direction = $(this).data("scrollwipedirection");
-            var time = $(this).data("scrollwipetime");
-            var offset = $(this).data("scrollwipeoffset");
+            var direction = $(this).data("scrollslidedirection");
+            var time = $(this).data("scrollslidetime");
+            var offset = $(this).data("scrollslideoffset");
             if(direction == "left")
             {
-                $(this).wipeInFromLeft(time, offset);
+                $(this).slideInFromLeft(time, offset);
             }
             else if(direction == "right")
             {
-                $(this).wipeInFromRight(time, offset);
-            }
-            else if(direction == "bottom")
-            {
-                $(this).wipeInFromBottom(time, offset);
+                $(this).slideInFromRight(time, offset);
             }
         }
     });

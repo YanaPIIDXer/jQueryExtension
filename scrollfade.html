@@ -7,22 +7,22 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jqueryextension/helper.js"></script>
 <script src="js/jqueryextension/scrollfade.js"></script>
-<script src="js/jqueryextension/wipein.js"></script>
+<script src="js/jqueryextension/slidein.js"></script>
 
 <script type="text/javascript">
     $(function()
     {        
         $(".item").each(function(index)
         {
-            // ↓wipeInFromLeft() / wipeInFromRight() : wipein.jsで定義しているメソッド。
+            // ↓slideInFromLeft() / slideInFromRight() : slidein.jsで定義しているメソッド。
             //  scrollFade() : scrollfade.jsで定義しているメソッド。
             if(index % 2 == 0)
             {
-                $(this).wipeInFromLeft(1000).scrollFade(2000);
+                $(this).slideInFromLeft(1000).scrollFade(2000);
             }
             else
             {
-                $(this).wipeInFromRight(1000).scrollFade(2000);
+                $(this).slideInFromRight(1000).scrollFade(2000);
             }
         });
     })
@@ -47,7 +47,7 @@
 <div class="item">
     要素５
 </div>
-<div data-scrollfade="true" data-scrollfadetime=2000 data-scrollwipedirection="right" data-scrollwipetime=1000 class="auto-item">
+<div data-scrollfade="true" data-scrollfadetime=2000 data-scrollslidedirection="right" data-scrollslidetime=1000 class="auto-item">
     属性で設定する要素
 </div>
 </body>
