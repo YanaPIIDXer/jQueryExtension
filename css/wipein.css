@@ -1,0 +1,11 @@
+.caption {
+    text-align: center;
+}
+
+.item {
+    margin-top: 600px;
+    text-align: center;
+    width: 100vw;
+    height: 500px;
+    background-color: #00FF00;
+}
