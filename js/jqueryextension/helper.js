@@ -30,7 +30,7 @@ jQuery(function()
 
         var is_inside = false;
         var $self = $(this);
-        $(window).scroll(function()
+        function check()
         {
             if(is_inside_screen($self, offset))
             {
@@ -44,8 +44,10 @@ jQuery(function()
             {
                 is_inside = false;
             }
-        });
+        }
 
+        $(window).scroll(check);
+        check();
         return this;
     }
 });
